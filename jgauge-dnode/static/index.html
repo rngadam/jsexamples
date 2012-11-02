@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/jgauge.css" type="text/css" /> <!-- CSS for jGauge styling. -->
+		<script language="javascript" type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script language="javascript" type="text/javascript" src="js/jQueryRotate.min.js"></script>
+		<script language="javascript" type="text/javascript" src="js/jgauge-0.3.0.a3.js"></script>
+		<script src="/bundle.js"></script>
+
+	</head>
+	<body>
+		<div id="one" class="jgauge" style="text-align: center;"></div>
+		<div id="five" class="jgauge"></div>
+		<div id="fifteen" class="jgauge"></div>
+		<script type="text/javascript">
+		function createLoadGauge(id) {
+			var myGauge = new jGauge(); // Create a new jGauge.
+			myGauge.id = id; // Link the new jGauge to the placeholder DIV.
+			myGauge.autoPrefix = autoPrefix.si; // Use SI prefixing (i.e. 1k = 1000).
+			myGauge.imagePath = 'img/jgauge_face_taco.png';
+			myGauge.segmentStart = -225
+			myGauge.segmentEnd = 45
+			myGauge.width = 170;
+			myGauge.height = 170;
+			myGauge.needle.imagePath = 'img/jgauge_needle_taco.png';
+			myGauge.needle.xOffset = 0;
+			myGauge.needle.yOffset = 0;
+			myGauge.label.yOffset = 55;
+			myGauge.label.color = '#fff';
+			myGauge.label.precision = 1; 
+			myGauge.label.suffix = ''; 
+			myGauge.ticks.labelRadius = 45;
+			myGauge.ticks.labelColor = '#0ce';
+			myGauge.ticks.start = 0.1;
+			myGauge.ticks.end = 1;
+			myGauge.ticks.count = 7;
+			myGauge.ticks.color = 'rgba(0, 0, 0, 0)';
+			myGauge.range.color = 'rgba(0, 0, 0, 0)';
+			return myGauge;							
+		}	
+		function updateGauge(data) {
+			one.setValue(data.one);
+			five.setValue(data.five);
+			fifteen.setValue(data.fifteen);
+		}
+			
+		var one = createLoadGauge('one');
+		var five = createLoadGauge('five');
+		var fifteen = createLoadGauge('fifteen');
+
+	   // This function is called by jQuery once the page has finished loading.
+	   $(document).ready(function(){
+		  one.init();
+		  five.init();
+		  fifteen.init();
+	   });
+	   </script>
+	</body>
+</html>
